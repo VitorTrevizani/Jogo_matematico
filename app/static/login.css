@@ -26,19 +26,31 @@ main > img{
     border-top-right-radius: 10%;
 }
 
-main > form{
+main > div#formulario{
     height: 40vh;
     width:70vw;
     font-family:'arial','Times New Roman', Times, serif;
 }
 
+div#formulario > form{
+    width:100%;
+}
+
 form  input{    /*todos as caixas input do form(do nome, da senha e do botao enviar*/
-    border-radius: 10px;
+    border-radius: 7px;
+   
 }
 
 form  input[type="submit"]{  /*input do botao enviar*/
     padding: 8px;
     margin-left: 10px; 
+    font-weight: bold;
+}
+
+form  input[type="submit"]:hover{
+    background-color: rgb(254, 254, 111);
+    
+    
 }
 
 form > p{   /*parágrafo do nome, senha e do "não tem uma conta?" */
@@ -50,6 +62,15 @@ form > button{
     font-weight: bolder;
     display:block;
     margin:auto;
+}
+
+form > button:hover{
+    background-color: rgb(254, 254, 111);
+}
+
+form > button > a{
+    text-decoration: none;
+    color: black;
 }
 
 
@@ -69,8 +90,9 @@ form > button{
         width:40vw;     
      }
 
-     main > form{
-             
+     main > div#formulario{  
+        display:flex;
+        align-items: center; 
         height: 70vh;
         width: 40vw;
      }

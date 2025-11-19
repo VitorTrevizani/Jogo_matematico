@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+*{
+    padding:0px;
+    margin:0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav{
+    display:flex;
+    justify-content: space-evenly;
+    padding: 12px 0px;
+    background-color: yellow;
+    box-shadow: 1px 1px 1px black;
+}
+
+nav > a {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    padding:5px;
+    border-radius: 2px;
+    transition: background-color, 0.5s;
+}
+
+nav > a:hover{
+    
+    background-color: green;
+    color:white;
+}

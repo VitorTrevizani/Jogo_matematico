@@ -3,26 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo dos calculos</title>
+    <title>Página de cadastro</title>
     <link rel="stylesheet" href="../static/style.css">
     <script src="https://kit.fontawesome.com/8623f200e5.js" crossorigin="anonymous"></script>
+    <style>
+        p.aviso{
+            background-image: linear-gradient(to right, rgb(42, 202, 234), rgb(245, 245, 164), rgb(42, 202, 234) );
+            font-size: 11px;
+        }
+        
+        input[type="submit"]{
+            display: block;
+            text-align: center;
+        }
+
+       
+    </style>
 </head>
 <body>
     <main>
         <img src="einstein.jpg" alt="Einstein_image">
         <div id="formulario">
             <form action="#" method="post">
+                <p class="aviso"> O nome deve possuir de 5 a 15 caracteres, numericos e alfabéticos</p>
                 <p>
                     <label for="inome"><i class="fa-solid fa-house"></i><b>Nome:</b> </label>
                     <input type="text" name="nome" id="inome" required minlength="5" maxlength="15">
                 </p>
+                <p class="aviso"> A senha deve possuir de 5 a 10 caracteres, numericos e alfabéticos</p>
                 <p>
                     <label for="isenha"><i class="fa-solid fa-key"></i><b>Senha:</b> </label>
                     <input type="password" nome="password" id="isenha" required minlength="5" maxlength="10">
                 </p>
                 <input type="submit" value="Entrar">
-                <p>Não tem uma conta? Clique abaixo e crie uma</p>
-                <button><a href="cadastro.html">Cadrastre-se</a></button>
             </form>
         </div>
     </main>
