@@ -24,7 +24,141 @@ nav > a {
 }
 
 nav > a:hover{
-    
     background-color: green;
     color:white;
 }
+
+
+
+main{
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    height: 92.3vh;
+    background-image: linear-gradient(to bottom, blue, rgb(204, 204, 252));
+}
+
+div#titulo{
+    padding:20px;
+    text-align: center;
+
+}
+
+div#titulo > h1{
+    text-shadow: 1px 1px 1px white;
+    font-size: 40px;
+    padding:10px;
+    
+}
+
+div#titulo > p{
+    margin-top: 15px;
+    color:aquamarine;
+    text-shadow: 1px 1px 1px black;
+}
+
+div.escolha{
+    padding:20px;
+    text-align: center;
+}
+
+
+div.escolha > p{
+    padding: 10px;
+    color:rgb(2, 49, 15);
+    font-weight: 700;
+    text-shadow: 1px 1px 1px white;
+    font-size: 20px;
+    background-image: linear-gradient(to right, #7272FD, yellow, #7272FD);
+}
+
+div.escolha > button{
+    margin: 50px ;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    transition: background-color 0.5s;
+}
+
+div.escolha > button:hover{
+    background-color: rgb(241, 227, 64);
+    color: black;
+    box-shadow: 1px 1px 1px black;
+}
+
+div#escolha_modo > button{
+    margin: 50px ;
+    padding: 15px;
+}
+
+
+div#escolha_dificuldade > button{
+    margin: 20px;
+    padding: 10px;
+}
+
+
+
+
+
+
+@media screen and (min-width:999px){
+
+    nav > a{
+        width:150px;
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    nav #login{
+        margin-left:300px; 
+    }
+
+    main{
+        flex-direction: row;
+    }
+
+    div#titulo{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    div#titulo > h1{
+        font-size: 70px;
+    }
+
+
+    div#titulo > p{
+        font-size: 18px;
+        margin-top:60px;
+        color: rgb(2, 38, 26);
+        text-shadow: 1px 1px 1px white;
+        font-weight: bold;
+    }
+
+
+
+    div.escolha > p{
+        background-image: none;
+        color: white;
+    }
+
+    div.escolha > button{
+        width:250px;
+    }
+
+     div#escolha_modo{
+        display:flex;
+        flex-direction: column; 
+        justify-content: center;
+    }
+
+
+    div#escolha_dificuldade > button{
+        height: 60px;
+    }
+}
+
