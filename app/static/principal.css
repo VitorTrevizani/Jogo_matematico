@@ -32,7 +32,7 @@ nav > a:hover{
 
 main{
     display:flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: space-evenly;
     height: 92.3vh;
     background-image: linear-gradient(to bottom, blue, rgb(204, 204, 252));
@@ -100,6 +100,58 @@ div#escolha_dificuldade > button{
 }
 
 
+div#game{
+   display:flex;
+   flex-flow: column nowrap;
+   align-items: center;
+   justify-content: center;
+   width: 90%;
+   height: 100%;
+   text-align: center;
+   
+}
+
+div#game > h2{
+    margin: 50px 0px;
+    color:white;
+    text-shadow: 1px 1px 1px black;
+
+}
+
+div#game > div.card{
+    display: inline-block;
+    height: 20%;
+    width: 40%;
+    background-color: #1b0101;
+    margin: 0px 12px 50px 12px;
+    border-radius: 20px;
+}
+
+div#game > div.card > h1{
+    color:white;
+    font-weight: bolder;
+    margin-top:25%;
+}
+
+div#game > button#start{
+    margin: auto;
+    padding: 12px;
+    border-radius: 10px;
+    background-color: green;
+    font-weight:bold;
+}
+
+div#game > div#alternativas > button{
+    margin:20px;
+    padding:30px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+
+
 
 
 
@@ -159,6 +211,31 @@ div#escolha_dificuldade > button{
 
     div#escolha_dificuldade > button{
         height: 60px;
+    }
+
+
+    div#game{
+        display:flex;
+        flex-flow: column nowrap;
+        width: 60%;
+        height: 100%;
+        text-align: center;
+    }
+
+    div#game > div.card{
+        display: inline-block;
+        height: 20%;
+        width: 40%;
+        background-color: #1b0101;
+        margin: 25px;
+    }
+
+
+    
+    div#game > div.card > h1{
+        color:white;
+        font-weight: bolder;
+        margin-top:10%;
     }
 }
 
