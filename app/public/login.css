@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+body, html{
+    animation: gradient 5s ease-in-out alternate infinite;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    width:100vw;
+    background-image: linear-gradient(to bottom, rgb(24, 4, 247), rgb(156, 156, 201));
+    background-size: 300% 300%;
+}
+
+main{
+    animation: entrada 1s ease-in-out, flutuar 5s  2s ease-in-out alternate infinite;
+    display:flex;
+    flex-flow: column nowrap;
+    background-color: rgb(27, 195, 241);
+    border-radius: 10%;
+    box-shadow: 0px 0px 18px black;
+}
+
+main > img{
+    height: 40vh;
+    width:70vw;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+}
+
+main > div#formulario{
+    height: 40vh;
+    width:70vw;
+    font-family:'arial','Times New Roman', Times, serif;
+}
+
+div#formulario > form{
+    width:100%;
+}
+
+form  input{    /*todos as caixas input do form(do nome, da senha e do botao enviar*/
+    border-radius: 7px;
+   
+}
+
+form  input[type="submit"]{  /*input do botao enviar*/
+    padding: 8px;
+    margin-left: 10px; 
+    font-weight: bold;
+}
+
+form  input[type="submit"]:hover{
+    background-color: rgb(254, 254, 111);
+    
+    
+}
+
+form > p{   /*parágrafo do nome, senha e do "não tem uma conta?" */
+    padding: 8px;
+}
+
+form > button{
+    border-radius: 10px;
+    font-weight: bolder;
+    display:block;
+    margin:auto;
+}
+
+form > button:hover{
+    background-color: rgb(254, 254, 111);
+}
+
+form > button > a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+@keyframes entrada {
+    from{
+        transform: translateY(-101%) rotate3d(0,0,1,90deg);
+        opacity: 0;
+    }
+    to{
+        transform: initial;
+        opacity: 1;
+    }
+}
+
+@keyframes gradient{
+    from{
+      background-position: 50% 0;
+    }
+    to{
+      background-position: 50% 100%;
+    }
+}
+
+@keyframes flutuar {
+    to{
+        transform: translateY(-40px)
+    }
+}
+
+
+
+
+@media screen and (min-width:900px){
+    
+     main{
+        flex-direction: row;
+     }
+
+     main > img{
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 10%;
+                
+        height: 70vh;
+        width:40vw;     
+     }
+
+     main > div#formulario{  
+        display:flex;
+        align-items: center; 
+        height: 70vh;
+        width: 40vw;
+     }
+     form > p > input{    /*inputs do nome e da senha*/
+        width: 60%;
+     }
+}
