@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+
 body, html{
     animation: gradient 5s ease-in-out alternate infinite;
     display:flex;
@@ -28,6 +30,10 @@ main > img{
 }
 
 main > div#formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 40vh;
     width:70vw;
     font-family:'arial','Times New Roman', Times, serif;
@@ -35,6 +41,7 @@ main > div#formulario{
 
 div#formulario > form{
     width:100%;
+
 }
 
 form  input{    /*todos as caixas input do form(do nome, da senha e do botao enviar*/

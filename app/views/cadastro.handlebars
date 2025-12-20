@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de cadastro</title>
-    <link rel="stylesheet" href="../public/login.css">
+    <link rel="stylesheet" href="/login.css">
     <script src="https://kit.fontawesome.com/8623f200e5.js" crossorigin="anonymous"></script>
     <style>
         p.aviso{
@@ -22,18 +22,32 @@
 </head>
 <body>
     <main>
-        <img src="../public/img/einstein.jpg" alt="Einstein_image">
+        <img src="/img/einstein.jpg" alt="Einstein_image">
         <div id="formulario">
-            <form action="#" method="post">
+            {{>_msg}}
+            {{#each erros}}
+                 <div style="
+                    width: 100%;
+                    height: 24px;
+                    background-color:red;
+                    color: white;
+                    text-align:center;
+                    
+                    margin:0 auto;
+                ">{{texto}}</div>
+            {{else}}
+
+            {{/each}}
+            <form action="/game/cadastro/fazercadastro" method="post">
                 <p class="aviso"> O nome deve possuir de 5 a 15 caracteres, numericos e alfabéticos</p>
                 <p>
-                    <label for="inome"><i class="fa-solid fa-house"></i><b>Nome:</b> </label>
-                    <input type="text" name="nome" id="inome" required minlength="5" maxlength="15">
+                    <label for="iname"><i class="fa-solid fa-house"></i><b>Nome:</b> </label>
+                    <input type="text" name="name" id="iname">
                 </p>
                 <p class="aviso"> A senha deve possuir de 5 a 10 caracteres, numericos e alfabéticos</p>
                 <p>
-                    <label for="isenha"><i class="fa-solid fa-key"></i><b>Senha:</b> </label>
-                    <input type="password" nome="password" id="isenha" required minlength="5" maxlength="10">
+                    <label for="ipassword"><i class="fa-solid fa-key"></i><b>Senha:</b> </label>
+                    <input type="password" name="password" id="ipassword">
                 </p>
                 <input type="submit" value="Entrar">
             </form>

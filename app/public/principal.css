@@ -6,6 +6,10 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+header{
+    background-color: yellow;
+}
+
 nav{
     display:flex;
     justify-content: space-evenly;
