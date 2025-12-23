@@ -1,19 +1,24 @@
+let temp = true
+let id = null
 
 
 function cria_interface(){
-    document.getElementById("infoTent").innerHTML = tentativas;
+
+    let cronometro
     
+    document.getElementById("infoTent").innerHTML = tentativas;
+
     let card1 = Math.trunc(((Math.random()) * 100));
     let card2 =  Math.trunc(((Math.random()) * 100)); 
     document.getElementById("card1").innerHTML = card1;
     document.getElementById("card2").innerHTML = "+ " + card2;
     cardResultado = Math.trunc(Math.random() * (3 - 0 + 1)) + 0;
-    
+    temp = true
 
     for(let i=0; i < alternativas.length; i++){
         
         if(estadoDific === "facil"){
-            
+            cronometro = 10
             if(i == cardResultado){
                 alternativas[i].innerHTML = card1 + card2;
                 respostaCerta = alternativas[i];
@@ -24,7 +29,7 @@ function cria_interface(){
         }
 
         else if(estadoDific === "medio"){
-            
+            cronometro = 8
             if(i == cardResultado){
                 alternativas[i].innerHTML = card1 + card2;
                 respostaCerta = alternativas[i];
@@ -35,7 +40,7 @@ function cria_interface(){
         }
 
         else if(estadoDific === "dificil"){
-            
+            cronometro = 6
             if(i == cardResultado){
                 alternativas[i].innerHTML = card1 + card2;
                 respostaCerta = alternativas[i];
@@ -46,7 +51,7 @@ function cria_interface(){
         }
 
         else{
-          
+            cronometro = 5
             if(i == cardResultado){
                 alternativas[i].innerHTML = card1 + card2;
                 respostaCerta = alternativas[i];
@@ -56,6 +61,62 @@ function cria_interface(){
             }
         }
     }
+
+    //função do tempo
+    
+    if(temp == true){
+
+        if(id != null){
+          clearInterval(id)
+        }
+
+        
+        id = setInterval(function() {
+            if(cronometro <= 0){
+                clearInterval(id);
+                cronometro = 0;
+                document.getElementById("infoTemp").innerHTML = cronometro;
+                tentativas--;
+                if(tentativas <= 0){ // fazer o botão de start voltar, e resetar os valores dos cards;
+                    document.getElementById("start").style.display = "block";
+                    for(let i=0; i < alternativas.length; i++){
+                        alternativas[i].innerHTML = "0000";
+                    }
+                    document.getElementById("card1").innerHTML = "0000";
+                    document.getElementById("card2").innerHTML = "0000";
+                        
+                    if(estadoDific === "facil"){
+                        tentativas = 7;
+                    }
+
+                    else if(estadoDific === "medio"){
+                        tentativas = 5;
+                    }
+
+                    else if(estadoDific === "dificil"){
+                        tentativas = 3;
+                    }
+
+                    else{
+                        tentativas = 3;
+                    }
+
+                    document.getElementById("infoTent").innerHTML = tentativas;
+                    temp = false;
+                }
+                else{
+                cria_interface()
+                return
+                }    
+            }
+            document.getElementById("infoTemp").innerHTML = cronometro;
+            cronometro -- ;
+            
+        }, 1000); // 1000 milissegundos = 1 segundo
+    }
+
+
+
 }
 
 
@@ -118,30 +179,13 @@ let start = document.getElementById("start");
 start.addEventListener("click", () => {
         document.getElementById("start").style.display = "none";
         cria_interface();
-        if(tentativas <= 0){
-            if(estadoDific === "facil"){
-                tentativas = 7;
-            }
-
-            else if(estadoDific === "medio"){
-                tentativas = 5;
-            }
-
-            else if(estadoDific === "dificil"){
-                tentativas = 3;
-            }
-
-            else{
-                tentativas = 3;
-            }
-        }
-
 });
 
 
 
 for(let i=0; i<alternativas.length; i++){
     alternativas[i].addEventListener("click", () => {
+        clearInterval(id)
         if(alternativas[i] == respostaCerta){
             acertos++;
             cria_interface();
@@ -155,6 +199,25 @@ for(let i=0; i<alternativas.length; i++){
                 }
                 document.getElementById("card1").innerHTML = "0000";
                 document.getElementById("card2").innerHTML = "0000";
+                    
+                if(estadoDific === "facil"){
+                    tentativas = 7;
+                }
+
+                else if(estadoDific === "medio"){
+                    tentativas = 5;
+                }
+
+                else if(estadoDific === "dificil"){
+                    tentativas = 3;
+                }
+
+                else{
+                    tentativas = 3;
+                }
+
+                document.getElementById("infoTent").innerHTML = tentativas;
+                
             }
             else{
                 cria_interface();
