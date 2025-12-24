@@ -10,12 +10,14 @@
 <body> 
         <main>
             <img src="/img/einstein.jpg" alt="Einstein_image">
+
             <div id="formulario">
-                {{>_msg}}
+               {{>_msg}}
+
                 <form action="/game/login/fazerlogin" method="post">
                     <p>
-                        <label for="iname"><i class="fa-solid fa-house"></i><b>Nome:</b> </label>
-                        <input type="text" name="name" id="iname" required>
+                        <label for="iemail"><i class="fa-solid fa-house"></i><b>E-mail:</b> </label>
+                        <input type="email" name="email" id="iemail" required>
                     </p>
                     <p>
                         <label for="ipassword"><i class="fa-solid fa-key"></i><b>Senha:</b> </label>
