@@ -6,33 +6,6 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-header{
-    background-color: yellow;
-}
-
-nav{
-    display:flex;
-    justify-content: space-evenly;
-    padding: 12px 0px;
-    background-color: yellow;
-    box-shadow: 1px 1px 1px black;
-}
-
-nav > a {
-    text-decoration: none;
-    color: black;
-    font-weight: bolder;
-    padding:5px;
-    border-radius: 2px;
-    transition: background-color, 0.5s;
-}
-
-nav > a:hover{
-    background-color: green;
-    color:white;
-}
-
-
 
 main{
     display:flex;
@@ -174,16 +147,6 @@ div#game > div#alternativas > button{
 
 
 @media screen and (min-width:999px){
-
-    nav > a{
-        width:150px;
-        text-align: center;
-        border-radius: 8px;
-    }
-
-    nav #login{
-        margin-left:300px; 
-    }
 
     main{
         flex-direction: row;

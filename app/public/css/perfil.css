@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+*{
+   margin: 0px;
+   padding:0px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body, html{
+    width: 100vw;
+    height: 100vh;
+}
+
+main{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding:30px;
+   
+}
+
+div#foto{
+    position:relative;
+    background-color: aqua;
+    border-radius: 50%;
+    height: 500px;
+    width: 30%;
+    margin-right: 50px;
+}
+
+div#foto > img{
+    position:absolute;
+    height:70%;
+    width:60%;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%); 
+}
+
+div#foto > button{
+    position: absolute;
+    top:98%;
+    left:50%;
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 8px;
+}
+
+div#info > h3{
+    padding: 10px;
+    background-color: darkgreen;
+    border-radius: 10px;
+    color:white;
+    margin: 20px;
+}
+
+
+div#info > button{
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 8px;
+} 
+
+div#info > form > input{
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+div#card{
+    display:none;
+    position:absolute;
+    background-color: grey;
+    border-radius: 20px;
+    box-shadow: 0px 0px 9px 4px black;
+    z-index: 1000;
+}
+
+div#card > form{
+    padding:50px;
+}
+
+div#card > button{
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+div#card label{
+    color:white;
+    margin: 10px;
+}
+
+div#card  input{
+   padding: 10px;
+   background-color: aliceblue;
+   border-radius: 8px; 
+   margin:10px;
+}
+

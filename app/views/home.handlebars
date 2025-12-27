@@ -5,19 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina principla</title>
     <link rel="stylesheet" href="/css/usuario.css"> <!--não é necessário especificar a pasta public, o app ja sabe que está la-->
+    <link rel="stylesheet" href="/css/menu.css">
 </head>
 <body>
     
-    <header>
-        {{>_msg}}
-        <nav>
-            <a href="/game/home">Home</a>
-            <a href="#">Meu perfil</a>
-            <a href="#">Rankings</a>
-            <a href="#">Estatísticas</a>
-            <a href="/game/logout">Sair</a>
-        </nav>
-    </header>
+    {{>_menu}}
     <main>
         <div id="titulo">
             <h1>Pensa rápido</h1>

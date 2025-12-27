@@ -30,8 +30,8 @@ require("./config/auth")(passport)
    //session
     app.use(session({
         secret: "math123vitor",
-        resave: true,
-        saveUninitialized: true
+        resave: false,
+        saveUninitialized: false
     }))
 
     app.use(passport.initialize())
@@ -44,7 +44,7 @@ require("./config/auth")(passport)
         res.locals.error_msg = req.flash("error_msg")
         res.locals.error = req.flash("error")
         //a variavel abaixo armazena os dados do usuario logado. req.user é algo que o passport cria para armazenar dados do usuario logado
-        res.locals.User = req.user || null
+        res.locals.User = req.user || "zé ninguem"
         next()
     })
 

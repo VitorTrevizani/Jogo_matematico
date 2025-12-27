@@ -11,6 +11,10 @@ router.get("/home", estaLogado, (req, res) => {
     res.render("home")
 })
 
+router.get("/perfil", (req, res)=> {
+    res.render("perfil")
+})
+
 router.get("/login", (req, res) => {
     res.render("login")
 })
@@ -64,7 +68,7 @@ router.post("/cadastro/fazercadastro", (req, res) => {
         }
 
         //procura pra ver se já existe
-        Usuario.findOne({email: newUser.email, senha: newUser.senha}).lean().then((usuario) => {
+        Usuario.findOne({email: newUser.email}).lean().then((usuario) => {
             if(usuario){
                 req.flash("error_msg","Já existe um usuário com esse nome e senha cadastrados")
                 res.redirect("/game/cadastro")
@@ -107,9 +111,34 @@ router.get("/logout", (req, res, next) => {
         if(err){
             return next(err)
         }
-        req.flash("sucess_msg", "deslogado com sucesso")
+        req.flash("success_msg", "deslogado com sucesso")
         res.redirect("/")
     })
 })
+
+
+
+router.post("/mudarNome/:id", (req, res) => {
+
+    Usuario.findById(req.params.id).then((usuario) => {
+        if(usuario){
+            usuario.nome = req.body.nome
+            usuario.save().then(() =>{
+                req.flash("success_msg", "nome de usuário alterado para " + req.body.nome)
+                res.redirect("/game/perfil")
+            }).catch((err) => {
+                req.flash("error_msg", "erro ao alterar nome de usuario")
+                res.redirect("/game/perfil")
+            })
+        }else{
+            req.flash("error_msg", "usuario nao econtrado")
+        }
+    }).catch((err) => {
+        req.flash("error_msg", "erro interno")
+        res.redirect("/game/perfil")
+    })
+})
+
+
 
 module.exports = router

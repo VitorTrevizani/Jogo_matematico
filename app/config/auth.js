@@ -30,7 +30,7 @@ module.exports = function(passport){
 
     //Define como recuperar o usuário a partir do que foi salvo na sessão
     passport.deserializeUser((id, done) => {
-        Usuario.findById(id).then((usuario) => {
+        Usuario.findById(id).lean().then((usuario) => {
             if(usuario){
                 done(null, usuario)
             }else{

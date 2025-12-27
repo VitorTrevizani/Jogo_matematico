@@ -4,19 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina principla</title>
-    <link rel="stylesheet" href="css/usuario.css">
+    <link rel="stylesheet" href="/css/perfil.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <script src="https://kit.fontawesome.com/8623f200e5.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="home.html">Home</a>
-            <a href="perfil.html">Meu perfil</a>
-            <a href="rankings.html">Rankings</a>
-            <a href="estatisticas.html">Estatísticas</a>
-        </nav>
-    </header>
-    <main>
 
+    {{>_menu}}
+
+    <main>
+        <div id="foto">
+            <img src="/img/anonimo.png" alt="foto aqui">
+           
+        </div>
+        <div id="info">
+            <h3 style="display:inline">Nome: {{User.nome}}</h3>
+            <button id="mudarNome">Mudar nome</button>
+            <h3>Recorde fácil: {{User.recordeFacil}} </h3>
+            <h3>Recorde médio: {{User.recordeMedio}} </h3>
+            <h3>Recorde difícil: {{User.recordeDificil}} </h3>
+            <h3>Recorde hard:{{User.recordeHard}} </h3>
+            <form action="#" method="post">
+                <input type="file" name="arquivo" required><br>
+                <input type="submit" value="Alterar foto">
+            </form>
+        </div>
+
+        <div id="card">
+            <button id="x"><i class="fa-solid fa-x"></i></button>
+            <form action="/game/mudarNome/{{User._id}}" method="post">
+                <label for="inome">Escolha um novo nome:</label><br>
+                <input type="text" name="nome" id="inome" required maxlength="10"><br>
+                <input type="submit" value="Mudar nome">
+            </form>
+        </div>
     </main>
+
+    <script>
+        const x = document.getElementById("x")
+        const card = document.getElementById("card")
+        const botao = document.getElementById("mudarNome")
+
+        botao.addEventListener("click", () => {
+            card.style.display = "block";
+
+        })
+
+        x.addEventListener("click", () => {
+            card.style.display = "none"
+        })
+    </script>
+
+</body>
 </body>
 </html>
