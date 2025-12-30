@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/avatar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    {{>_menu}}
+    <main>
+        <h1>Escolha seu avatar</h1>
+
+        
+
+        <div id="selecao">
+            <button id="recuar" onclick="recuar()"><</button>
+            <div id="esquerda"></div>
+            <div id="centro"></div>
+            <div id="direita"></div>
+            <button id="avancar" onclick="avancar()">></button>
+        </div>
+        
+        <form action="/game/mudarAvatar/{{User._id}}" method="post">
+            <input id="selecionar" type="hidden" name="caminho">
+            <input type="submit" value="selecionar">
+        </form>
+       
+
+       
+    </main>
+  
+    <script>
+
+       let animEsquerda, animDireita, animCentro
+        function animation(esquerda, centro, direita){
+
+            if(animEsquerda){animEsquerda.destroy()}
+            if(animCentro){animCentro.destroy()}
+            if(animDireita){animDireita.destroy()}
+            
+            animEsquerda = lottie.loadAnimation({
+                container: document.getElementById('esquerda'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: esquerda
+            })
+
+            animCentro = lottie.loadAnimation({
+                container: document.getElementById('centro'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: centro
+            })
+
+            animDireita = lottie.loadAnimation({
+                container: document.getElementById('direita'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: direita
+            })
+        
+        }
+
+        const selecionar = document.getElementById("selecionar")
+        const quantAvatares = 8
+
+        let contEsquerda = 1
+        let contCentro = 2 
+        let contDireita = 3
+       
+
+        let esquerda = `/img/avatares/Avatar${contEsquerda}.json`
+        let centro = `/img/avatares/Avatar${contCentro}.json`
+        let direita = `/img/avatares/Avatar${contDireita}.json`
+
+        animation(esquerda, centro, direita)
+
+        selecionar.value = centro
+        
+
+
+        function avancar(){
+        
+            contEsquerda = contEsquerda ==  quantAvatares? 1 : contEsquerda+1
+            contCentro = contCentro == quantAvatares? 1 : contCentro+1
+            contDireita = contDireita == quantAvatares?  1 : contDireita+1
+            
+        
+            esquerda = `/img/avatares/Avatar${contEsquerda}.json`
+            centro = `/img/avatares/Avatar${contCentro}.json`
+            direita = `/img/avatares/Avatar${contDireita}.json`
+        
+            animation(esquerda, centro, direita)
+
+            selecionar.value = centro
+           
+
+
+        }
+
+        function recuar(){
+
+            contEsquerda = contEsquerda == 1? quantAvatares : contEsquerda-1
+            contCentro = contCentro == 1? quantAvatares : contCentro-1
+            contDireita = contDireita == 1? quantAvatares : contDireita-1
+        
+
+            esquerda = `/img/avatares/Avatar${contEsquerda}.json`
+            centro = `/img/avatares/Avatar${contCentro}.json`
+            direita = `/img/avatares/Avatar${contDireita}.json`
+
+            animation(esquerda, centro, direita)
+
+            selecionar.value = centro
+
+        }
+
+     
+
+    
+        
+          
+          
+        
+    </script>
+    
+</body>
+</html>

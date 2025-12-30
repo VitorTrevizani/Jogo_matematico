@@ -7,6 +7,7 @@ const bcrypt = require("bcryptjs")
 const passport = require("passport")
 const {estaLogado} = require("../helpers/estaLogado")
 
+
 router.get("/home", estaLogado, (req, res) => {
     res.render("home")
 })
@@ -136,6 +137,34 @@ router.post("/mudarNome/:id", (req, res) => {
     }).catch((err) => {
         req.flash("error_msg", "erro interno")
         res.redirect("/game/perfil")
+    })
+})
+
+
+router.get("/escolherAvatar", (req, res) => {
+    res.render("avatar")
+})
+
+router.post("/mudarAvatar/:id", (req, res) => {
+
+    Usuario.findById(req.params.id).then((usuario) => {
+        if(usuario){
+            usuario.avatarPath = req.body.caminho
+            usuario.save().then(() => {
+                req.flash("success", "Avatar alterado com sucesso")
+                res.redirect("/game/perfil")
+            }).catch((err) => {
+                req.flash("error_msg", "erro ao tentar mudar o avatar")
+                res.redirect("/game/perfil")
+            })
+        }else{
+            req.flash("error_msg", "erro interno1")
+            res.redirect("/game/escolherAvatar")
+        }
+    }).catch((err) => {
+        req.flash("error_msg", "erro interno2")
+        res.redirect("/game/escolherAvatar")
+        
     })
 })
 

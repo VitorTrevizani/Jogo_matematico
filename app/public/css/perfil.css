@@ -13,6 +13,8 @@ body, html{
 
 main{
     display:flex;
+    height: 580px;
+    background-color: rgba(255, 0, 0, 0.496);
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -20,16 +22,16 @@ main{
    
 }
 
-div#foto{
+div#animacao{
     position:relative;
-    background-color: aqua;
+    overflow: hidden;
     border-radius: 50%;
-    height: 500px;
+    height: 40%;
     width: 30%;
-    margin-right: 50px;
+    margin: auto 50px auto 0;
 }
 
-div#foto > img{
+div#animacao > img{
     position:absolute;
     height:70%;
     width:60%;
@@ -38,7 +40,7 @@ div#foto > img{
     transform: translate(-50%, -50%); 
 }
 
-div#foto > button{
+div#animacao > button{
     position: absolute;
     top:98%;
     left:50%;
@@ -62,7 +64,7 @@ div#info > button{
     border-radius: 8px;
 } 
 
-div#info > form > input{
+div#info > a > button{
     padding: 10px;
     background-color: aliceblue;
     border-radius: 8px;

@@ -18,6 +18,11 @@ const UsuarioSchema = new Schema({
         require: true
     },
 
+    avatarPath: {
+        type: String ,
+        default: null
+    },
+
     recordeFacil : {
         type: Number,
         default: 0
