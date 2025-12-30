@@ -1,6 +1,22 @@
 let temp = true
 let id = null
 
+// Pega o valor do input hidden
+const userId = document.getElementById('userId').value;
+
+// Exemplo de uso: enviar junto com a pontuação
+function enviarPontuacao(score, dificuldade) {
+  fetch('/game/acertos', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ userId, score, dificuldade })
+  })
+  .then(res => res.json())
+  .then(data => console.log(data.message))
+  .catch(err => console.error(err));
+}
+
+
 
 function cria_interface(){
 
@@ -78,6 +94,8 @@ function cria_interface(){
                 document.getElementById("infoTemp").innerHTML = cronometro;
                 tentativas--;
                 if(tentativas <= 0){ // fazer o botão de start voltar, e resetar os valores dos cards;
+                    enviarPontuacao(acertos, estadoDific)
+                    acertos = 0;
                     document.getElementById("start").style.display = "block";
                     for(let i=0; i < alternativas.length; i++){
                         alternativas[i].innerHTML = "0000";
@@ -193,6 +211,8 @@ for(let i=0; i<alternativas.length; i++){
         else{
             tentativas --;
             if(tentativas == 0){ // fazer o botão de start voltar, e resetar os valores dos cards;
+                enviarPontuacao(acertos, estadoDific)
+                acertos = 0
                 document.getElementById("start").style.display = "block";
                 for(let i=0; i < alternativas.length; i++){
                     alternativas[i].innerHTML = "0000";
@@ -230,7 +250,7 @@ for(let i=0; i<alternativas.length; i++){
     
 
     
-    
+   
 
 
 
