@@ -4,19 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina principla</title>
-    <link rel="stylesheet" href="css/usuario.css">
+    <link rel="stylesheet" href="/css/ranking.css">
+    <link rel="stylesheet" href="/css/menu.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="home.html">Home</a>
-            <a href="perfil.html">Meu perfil</a>
-            <a href="rankings.html">Rankings</a>
-            <a href="estatisticas.html">Estatísticas</a>
-        </nav>
-    </header>
+    {{>_menu}}
     <main>
-
+        <div>
+          <a href="/game/rankings?dif=recordeFacil">facil</a>
+          <a href="/game/rankings?dif=recordeMedio">medio</a>
+          <a href="/game/rankings?dif=recordeDificil">dificil</a>
+          <a href="/game/rankings?dif=recordeHard">hard</a>
+            
+        </div>
+        <div id="Facil">
+            {{#each usuarios}}
+                <div>
+                    <h1>{{nome}}</h1>
+                    <p>Recorde fácil: {{recordeFacil}}</p>
+                    <p>Recorde médio: {{recordeMedio}}</p>
+                    <p>Recorde difícil: {{recordeDificil}}</p>
+                    <p>Recorde hard: {{recordeHard}}</p>
+                </div>
+            {{else}}
+            {{/each}}
+        </div>
     </main>
 </body>
 </html>

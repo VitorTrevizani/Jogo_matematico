@@ -9,10 +9,10 @@ const {estaLogado} = require("../helpers/estaLogado")
 
 
 router.get("/home", estaLogado, (req, res) => {
-    res.render("home")
+    res.render("gameplay/home")
 })
 
-router.get("/perfil", (req, res)=> {
+router.get("/perfil", estaLogado, (req, res)=> {
     res.render("perfil")
 })
 
@@ -169,46 +169,20 @@ router.post("/mudarAvatar/:id", (req, res) => {
 })
 
 
-router.post("/acertos", (req, res) => {
+router.get("/rankings", (req, res) => {
 
-    const {userId, score, dificuldade} = req.body
+    const dificuldade = req.query.dif || "recordeFacil"
 
-    Usuario.findById(userId).then((usuario) => {
-
-        if(usuario){
-
-            if(dificuldade == "facil"){ 
-                if(score > usuario.recordeFacil) {usuario.recordeFacil = score}
-            }
-            else if(dificuldade == "medio"){
-                if(score > usuario.recordeMedio) {usuario.recordeMedio = score} 
-            }
-            else if(dificuldade == "dificil"){
-                if(score > usuario.recordeDificil) {usuario.recordeDificil = score}
-            }
-            else if(dificuldade == "hard"){
-                if(score > usuario.recordeHard) {usuario.recordeHard = score}
-            }
-
-            usuario.save().then(() => {
-                console.log("show!")
-            }).catch((err) => {
-                req.flash("error_msg", "erro interno")
-                res.redirect("/game/home")
-            })
-
-        }else{
-           req.flash("error_msg", "erro interno")
-           res.redirect("/game/home")
-        }
-
-    }).catch((err) => {
-
-        req.flash("error_msg", "falha no servidor")
+    Usuario.find().sort({[dificuldade] : -1}).lean().then((usuarios) => { //conchetes indicam que é uma variavel, e nao um literal
+        res.render("rankings", {usuarios : usuarios})
+     }).catch((err) => {
+        req.flash("error_msg", "erro interno")
         res.redirect("/game/home")
-
     })
 })
+
+//Um query param (parâmetro de consulta) é uma parte da URL usada para enviar informações extras para o servidor. Eles aparecem depois do ? na URL(na view). query params são usados para filtros, paginação, ordenação e opções extras sem precisar criar várias rotas diferentes. No Express, os query params ficam em req.query
+
 
 
 module.exports = router

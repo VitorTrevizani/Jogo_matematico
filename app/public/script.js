@@ -1,12 +1,21 @@
 let temp = true
 let id = null
+let respostaCerta = 0
+let acertos = 0;
+let cardResultado = 0
+let alternativas = document.getElementsByClassName("altern");
+let start = document.getElementById("start");
+let dificuldade = document.getElementById("dificuldade").value;
+let tentativas = 0;
+
+
 
 // Pega o valor do input hidden
 const userId = document.getElementById('userId').value;
 
 // Exemplo de uso: enviar junto com a pontuação
 function enviarPontuacao(score, dificuldade) {
-  fetch('/game/acertos', {
+  fetch('/gameplay/acertos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ userId, score, dificuldade })
@@ -33,7 +42,7 @@ function cria_interface(){
 
     for(let i=0; i < alternativas.length; i++){
         
-        if(estadoDific === "facil"){
+        if(dificuldade === "facil"){           
             cronometro = 10
             if(i == cardResultado){
                 alternativas[i].innerHTML = card1 + card2;
@@ -44,7 +53,7 @@ function cria_interface(){
             }
         }
 
-        else if(estadoDific === "medio"){
+        else if(dificuldade === "medio"){           
             cronometro = 8
             if(i == cardResultado){
                 alternativas[i].innerHTML = card1 + card2;
@@ -55,7 +64,7 @@ function cria_interface(){
             }
         }
 
-        else if(estadoDific === "dificil"){
+        else if(dificuldade === "dificil"){ 
             cronometro = 6
             if(i == cardResultado){
                 alternativas[i].innerHTML = card1 + card2;
@@ -94,7 +103,7 @@ function cria_interface(){
                 document.getElementById("infoTemp").innerHTML = cronometro;
                 tentativas--;
                 if(tentativas <= 0){ // fazer o botão de start voltar, e resetar os valores dos cards;
-                    enviarPontuacao(acertos, estadoDific)
+                    enviarPontuacao(acertos, dificuldade)
                     acertos = 0;
                     document.getElementById("start").style.display = "block";
                     for(let i=0; i < alternativas.length; i++){
@@ -103,15 +112,15 @@ function cria_interface(){
                     document.getElementById("card1").innerHTML = "0000";
                     document.getElementById("card2").innerHTML = "0000";
                         
-                    if(estadoDific === "facil"){
+                    if(dificuldade === "facil"){
                         tentativas = 7;
                     }
 
-                    else if(estadoDific === "medio"){
+                    else if(dificuldade === "medio"){
                         tentativas = 5;
                     }
 
-                    else if(estadoDific === "dificil"){
+                    else if(dificuldade === "dificil"){
                         tentativas = 3;
                     }
 
@@ -133,71 +142,26 @@ function cria_interface(){
         }, 1000); // 1000 milissegundos = 1 segundo
     }
 
-
-
 }
 
-
-
-
-const modos = document.getElementsByClassName("modo");
-for(let i = 0; i < modos.length; i++){
-    modos[i].addEventListener("click", () =>{
-        if(modos[i].id === "ranqueado"){
-            document.getElementById("escolha_modo").style.display = "none";
-            document.getElementById("escolha_dificuldade").style.display = "grid";
-        }
-    });
-}
-
-let respostaCerta = 0
-let estadoDific = "";
-let tentativas = 0;
-
-
-const dific = document.getElementsByClassName("dific");
-for(let i = 0; i < dific.length; i++){
-    dific[i].addEventListener("click", () => {
-
-        document.getElementById("titulo").style.display = "none";
-        document.getElementById("escolha_modo").style.display = "none";
-        document.getElementById("escolha_dificuldade").style.display = "none";
-        document.getElementsByTagName("main")[0].style.alignItems = "center";
-        document.getElementById("game").style.display = "block";
-
-
-        if(dific[i].id === "facil"){
-            tentativas = 7;
-            estadoDific = "facil";
-        }
-        else if(dific[i].id === "medio"){
-            tentativas = 5;
-            estadoDific = "medio";
-        }
-        else if(dific[i].id === "dificil"){
-            tentativas = 3;
-            estadoDific = "dificil";
-        }
-        else{
-            tentativas = 3;
-            estadoDific = "hard";
-        }
-    })
-}
-
-
-let acertos = 0;
-let cardResultado = 0
-let alternativas = document.getElementsByClassName("altern");
-let start = document.getElementById("start");
 
 
 
 
 start.addEventListener("click", () => {
-        document.getElementById("start").style.display = "none";
-        cria_interface();
+     document.getElementById("start").style.display = "none";
+
+    if (dificuldade === "facil") tentativas = 7;
+    else if (dificuldade === "medio") tentativas = 5;
+    else if (dificuldade === "dificil") tentativas = 3;
+    else tentativas = 3;
+
+    cria_interface();
 });
+
+
+
+
 
 
 
@@ -211,7 +175,7 @@ for(let i=0; i<alternativas.length; i++){
         else{
             tentativas --;
             if(tentativas == 0){ // fazer o botão de start voltar, e resetar os valores dos cards;
-                enviarPontuacao(acertos, estadoDific)
+                enviarPontuacao(acertos, dificuldade)
                 acertos = 0
                 document.getElementById("start").style.display = "block";
                 for(let i=0; i < alternativas.length; i++){
@@ -220,15 +184,15 @@ for(let i=0; i<alternativas.length; i++){
                 document.getElementById("card1").innerHTML = "0000";
                 document.getElementById("card2").innerHTML = "0000";
                     
-                if(estadoDific === "facil"){
+                if(dificuldade === "facil"){
                     tentativas = 7;
                 }
 
-                else if(estadoDific === "medio"){
+                else if(dificuldade === "medio"){
                     tentativas = 5;
                 }
 
-                else if(estadoDific === "dificil"){
+                else if(dificuldade === "dificil"){
                     tentativas = 3;
                 }
 

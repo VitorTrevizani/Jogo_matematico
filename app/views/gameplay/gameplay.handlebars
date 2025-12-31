@@ -1,37 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina principla</title>
+    <title>Document</title>
     <link rel="stylesheet" href="/css/usuario.css"> <!--não é necessário especificar a pasta public, o app ja sabe que está la-->
     <link rel="stylesheet" href="/css/menu.css">
 </head>
 <body>
-    
     {{>_menu}}
     <main>
-        <input type="hidden" value={{User._id}} id="userId">
-        <div id="titulo">
-            <h1>Pensa rápido</h1>
-            <p> o jogo feito para aguçar seu raciocínio matemático</p>
-        </div>
-        <div class="escolha" id="escolha_modo">
-            <p>Escolha um modo de jogo:</p>
-            <button class="modo" id="ranqueado">Ranqueado</button>
-            <button class="modo" id="personalizado">Personalisado</button>
-        </div>
-
-        <div class="escolha" id="escolha_dificuldade" style="display:none">
-            <p>Escolha a dificuldade:</p>
-            <button class="dific" id="facil">Fácil</button>
-            <button class="dific" id="medio">Médio</button>
-            <button class="dific" id="dificil">Difícil</button>
-            <button class="dific" id="hard">Ultra Hard - só pra gênios</button>
-        </div>
-        
-
-        <div id="game" style="display:none">
+       <div id="game">
+             
+             <input type="hidden" id="userId" value="{{User._id}}">
+            <input type="hidden" id="dificuldade" value="{{dificuldade}}">
 
             <h2>Faça os Cáculos antes que o tempo se esgote</h2>
 
@@ -47,6 +29,8 @@
             <div class="card">
                 <h1 id="card2">0000</h1>
             </div>
+
+            
             <button id="start">START</button>
             
             <div id="alternativas">
@@ -56,9 +40,8 @@
                 <button class="altern" id="altern4">0000</button>
             </div>
         </div>
-
     </main>
 
-     <script src="/script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>

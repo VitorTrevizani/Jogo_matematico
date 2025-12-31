@@ -5,6 +5,7 @@ const { engine } = require("express-handlebars")
 const mongoose = require("mongoose")
 const path = require("path")
 const game = require("./routes/game")
+const gameplay = require("./routes/gameplay")
 const session = require("express-session")
 const flash = require("connect-flash")
 const passport = require("passport")
@@ -54,8 +55,8 @@ require("./config/auth")(passport)
      res.render("index")
    })
 
-   
    app.use("/game", game)
+   app.use("/gameplay", gameplay)
         
 
 

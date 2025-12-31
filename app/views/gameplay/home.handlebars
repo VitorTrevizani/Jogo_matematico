@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina principla</title>
+    <link rel="stylesheet" href="/css/usuario.css"> <!--não é necessário especificar a pasta public, o app ja sabe que está la-->
+    <link rel="stylesheet" href="/css/menu.css">
+</head>
+<body>
+    
+    {{>_menu}}
+    <main>
+        <input type="hidden" value={{User._id}} id="userId">
+        <div id="titulo">
+            <h1>Pensa rápido</h1>
+            <p> o jogo feito para aguçar seu raciocínio matemático</p>
+        </div>
+        <div class="escolha" id="escolha_modo">
+            <p>Escolha um modo de jogo:</p>
+            <a class="modo" id="ranqueado" href="/gameplay/escolherDificuldade">Ranqueado</a>
+            <a class="modo" id="personalizado" href="#">Personalisado</a>
+        </div>
+
+    </main>
+
+   
+</body>
+</html>

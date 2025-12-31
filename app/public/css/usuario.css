@@ -49,49 +49,56 @@ div.escolha > p{
     background-image: linear-gradient(to right, #7272FD, yellow, #7272FD);
 }
 
-div.escolha > button{
+div.escolha a{
+    display: block;
     margin: 50px ;
     padding: 15px;
     border-radius: 10px;
     background-color: red;
-    color: white;
-    font-weight: bolder;
     transition: background-color 0.5s;
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
+    box-shadow: 1px 5px 5px 0px black;
 }
 
-div.escolha > button#ranqueado{
+
+
+div.escolha a#ranqueado{
     animation: inflar 3s ease-in-out alternate infinite;
 }
 
-div.escolha > button#personalizado{
+div.escolha a#personalizado{
     animation: inflar 3s 3s ease-in-out alternate infinite;
 }
 
-div.escolha > button:hover{
+div.escolha a:hover{
     background-color: rgb(241, 227, 64);
     color: black;
     box-shadow: 1px 1px 1px black;
     cursor:pointer;
 }
 
-div#escolha_modo > button{
+
+div#escolha_modo > a{
     margin: 50px ;
     padding: 15px;
 }
 
 
-div#escolha_dificuldade > button{
+div#escolha_dificuldade > a{
     margin: 20px;
     padding: 10px;
+    width: 90%;
 }
 
 
-div#game{
+
+div#game{ 
    display:flex;
    flex-flow: column nowrap;
    align-items: center;
    justify-content: center;
-   width: 90%;
    height: 100%;
    text-align: center;
    
@@ -105,7 +112,6 @@ div#game > h2{
 }
 
 div#game > div.card{
-    display: inline-block;
     height: 20%;
     width: 40%;
     background-color: #1b0101;
@@ -178,7 +184,7 @@ div#game > div#alternativas > button{
         color: white;
     }
 
-    div.escolha > button{
+    div.escolha a{
         width:250px;
     }
 
@@ -188,16 +194,22 @@ div#game > div#alternativas > button{
         justify-content: center;
     }
 
+    div#escolha_dificuldade{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
 
-    div#escolha_dificuldade > button{
-        height: 60px;
+
+    div#escolha_dificuldade  a{
+        height: 30px;
     }
 
 
     div#game{
         display:flex;
         flex-flow: column nowrap;
-        width: 60%;
+        width: 80%;
         height: 100%;
         text-align: center;
     }
@@ -205,7 +217,7 @@ div#game > div#alternativas > button{
     div#game > div.card{
         display: inline-block;
         height: 20%;
-        width: 40%;
+        width: 20%;
         background-color: #1b0101;
         margin: 25px;
     }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolher dificuldade</title>
+    <link rel="stylesheet" href="/css/usuario.css"> <!--não é necessário especificar a pasta public, o app ja sabe que está la-->
+    <link rel="stylesheet" href="/css/menu.css">
+</head>
+<body>
+    {{>_menu}}
+
+    <main>
+        <div id="titulo">
+            <h1>Pensa rápido</h1>
+            <p> o jogo feito para aguçar seu raciocínio matemático</p>
+        </div>
+
+        <div class="escolha" id="escolha_dificuldade">
+            <p>Escolha a dificuldade:</p>
+            <a class="dific" id="facil" href="/gameplay/jogar/facil">Fácil</a>
+            <a class="dific" id="medio" href="/gameplay/jogar/medio">Médio</a>
+            <a class="dific" id="dificil" href="/gameplay/jogar/dificil">Difícil</a>
+            <a class="dific" id="hard" href="/gameplay/jogar/hard">Ultra hard - só pra gênios</a>
+        </div>
+        
+    </main>
+
+    
+</body>
+</html>
