@@ -6,13 +6,44 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+:root{
+    --fundo1:blue;
+    --fundo2:rgb(204, 204, 252);
+    --titulo:black;
+    --paragrafo: aquamarine;
+
+    --cardBackground:#1b0101;
+    --h2Color: black;
+    --cardColor: white;
+    --alternativaColor: white;
+
+}
+
+.escuro{
+    --fundo1:black;
+    --fundo2:black;
+    --titulo:white;
+    --paragrafo: rgb(190, 187, 187);
+
+    --navBackground: blue;
+    --navColor: white;
+    --navColorHover: black;
+    --linkBackgroundHover: red;
+
+    --cardBackground:white;
+    --h2Color: white;
+    --cardColor: black;
+    
+}
+
+
 
 main{
     display:flex;
     flex-flow: column nowrap;
     justify-content: space-evenly;
     height: 92.3vh;
-    background-image: linear-gradient(to bottom, blue, rgb(204, 204, 252));
+    background-image: linear-gradient(to bottom, var(--fundo1), var(--fundo2));
 }
 
 div#titulo{
@@ -25,12 +56,13 @@ div#titulo > h1{
     text-shadow: 1px 1px 1px white;
     font-size: 40px;
     padding:10px;
+    color: var(--titulo)
     
 }
 
 div#titulo > p{
     margin-top: 15px;
-    color:aquamarine;
+    color:var(--paragrafo);
     text-shadow: 1px 1px 1px black;
 }
 
@@ -105,24 +137,43 @@ div#game{
 }
 
 div#game > h2{
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
     margin: 50px 0px;
-    color:white;
+    color:var(--h2Color);
     text-shadow: 1px 1px 1px black;
-
+    font-size: 100%;
 }
 
-div#game > div.card{
-    height: 20%;
-    width: 40%;
-    background-color: #1b0101;
-    margin: 0px 12px 50px 12px;
+div#info{
+    color: var(--h2Color);
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+div#cards{
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    margin-top: 5px;
+}
+
+div#game  div.card{
+    margin: 10px;
+    width: 30% ;
+    padding: 10%;
+    background-color:var(--cardBackground);
     border-radius: 20px;
 }
 
-div#game > div.card > h1{
-    color:white;
+
+div#game  div.card > h1{
+    color:var(--cardColor);
     font-weight: bolder;
-    margin-top:25%;
+    margin-top:20%;
+    font-size: 100%;
 }
 
 div#game > button#start{
@@ -138,7 +189,7 @@ div#game > div#alternativas > button{
     padding:30px;
     border-radius: 10px;
     background-color: red;
-    color: white;
+    color: var(--alternativaColor);
     font-weight: bold;
 }
 
@@ -214,18 +265,31 @@ div#game > div#alternativas > button{
         text-align: center;
     }
 
-    div#game > div.card{
-        display: inline-block;
-        height: 20%;
-        width: 20%;
-        background-color: #1b0101;
-        margin: 25px;
+    div#game > h2{
+        font-size: 30px
+    }
+
+
+    div#game div#cards{
+        width: 600px;
+    }
+
+    div#game  div.card{
+        margin: 20px;
+        width: 30% ;
+        padding: 10%;
+        background-color:var(--cardBackground);
+        border-radius: 20px;
+}
+
+    div#game  div.card > h1{
+        font-size: 20px;
+        margin-top:25%;
     }
 
 
     
-    div#game > div.card > h1{
-        color:white;
+    div#game div.card > h1{
         font-weight: bolder;
         margin-top:10%;
     }

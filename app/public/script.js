@@ -7,6 +7,7 @@ let alternativas = document.getElementsByClassName("altern");
 let start = document.getElementById("start");
 let dificuldade = document.getElementById("dificuldade").value;
 let tentativas = 0;
+let limite = 0;
 
 
 
@@ -33,8 +34,8 @@ function cria_interface(){
     
     document.getElementById("infoTent").innerHTML = tentativas;
 
-    let card1 = Math.trunc(((Math.random()) * 100));
-    let card2 =  Math.trunc(((Math.random()) * 100)); 
+    let card1 = Math.trunc(((Math.random()) * limite));
+    let card2 =  Math.trunc(((Math.random()) * limite)); 
     document.getElementById("card1").innerHTML = card1;
     document.getElementById("card2").innerHTML = "+ " + card2;
     cardResultado = Math.trunc(Math.random() * (3 - 0 + 1)) + 0;
@@ -49,7 +50,7 @@ function cria_interface(){
                 respostaCerta = alternativas[i];
             }
             else{
-                alternativas[i].innerHTML = Math.trunc(((Math.random()) * 1000));
+                alternativas[i].innerHTML = Math.trunc(((Math.random()) * limite));
             }
         }
 
@@ -60,7 +61,7 @@ function cria_interface(){
                 respostaCerta = alternativas[i];
             }
             else{
-                alternativas[i].innerHTML = Math.trunc(((Math.random()) * 1000));
+                alternativas[i].innerHTML = Math.trunc(((Math.random()) * limite));
             }
         }
 
@@ -71,7 +72,7 @@ function cria_interface(){
                 respostaCerta = alternativas[i];
             }
             else{
-                alternativas[i].innerHTML = Math.trunc(((Math.random()) * 100));
+                alternativas[i].innerHTML = Math.trunc(((Math.random()) * limite));
             }
         }
 
@@ -82,7 +83,7 @@ function cria_interface(){
                 respostaCerta = alternativas[i];
             }
             else{
-                alternativas[i].innerHTML = Math.trunc(((Math.random()) * 100));
+                alternativas[i].innerHTML = Math.trunc(((Math.random()) * limite));
             }
         }
     }
@@ -151,10 +152,22 @@ function cria_interface(){
 start.addEventListener("click", () => {
      document.getElementById("start").style.display = "none";
 
-    if (dificuldade === "facil") tentativas = 7;
-    else if (dificuldade === "medio") tentativas = 5;
-    else if (dificuldade === "dificil") tentativas = 3;
-    else tentativas = 3;
+    if (dificuldade === "facil"){
+        tentativas = 7;
+        limite = 100;
+    }
+    else if (dificuldade === "medio"){
+        tentativas = 5;
+        limite = 100
+    }
+    else if (dificuldade === "dificil"){
+        tentativas = 3;
+        limite = 1000
+    }
+    else{
+        tentativas = 3;
+        limite = 10000
+    }
 
     cria_interface();
 });

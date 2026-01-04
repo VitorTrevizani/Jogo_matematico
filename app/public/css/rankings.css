@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+main{
+    padding: 10px;
+    background-color: aliceblue;
+    background-color: rgb(43, 43, 249);
+}
+
+div#escolha{
+    width: 50%;
+    margin: auto;
+    padding: 50px;
+    
+}
+
+div#escolha > a{
+    padding: 10px;
+    background-color: aquamarine;
+    margin: 0 7%;
+    border-radius: 10px;
+    text-decoration: none;
+    color:black;
+}
+
+div#facil{
+    margin:auto;
+    width: 40%;
+    text-align: center;
+}
+
+div.posicao{
+    padding: 10px;
+    background-color: orangered;
+    border-radius: 20px;
+    color: white;
+
+}
+
+div.usuarios{
+    display: flex;
+    justify-content: space-between;
+    background-color: aqua;
+    margin: 10px;
+    padding: 10px 10px 10px 0;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px 0px black;
+}
+
+
+
+div.animacao{
+    width: 30%;
+    margin-right: 15px;
+}
+
+img{
+    width: 50%;
+    height: 50%;
+    margin: 40px auto;
+}
+
+div.info{
+    margin: auto 0;
+    background-color: aquamarine;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+div.info > h1, p{
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+
+
+
+@media screen and (max-width:999px){
+
+    html{
+        font-size: 10px;
+    }
+
+    div.usuarios{
+        display: flex;
+        flex-direction: column;
+        padding: 5%;
+    }
+
+    div.animacao{
+        margin: auto;
+    }
+
+
+}

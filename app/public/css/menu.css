@@ -3,9 +3,17 @@
    padding:0px;
 }
 
+:root{
+    --navBackground: yellow;
+    --navColor: black;
+    --navColorHover: white;
+    --linkBackgroundHover: green;
+}
+
+
+
 
 header{
-    background-color: yellow;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -13,13 +21,13 @@ nav{
     display:flex;
     justify-content: space-evenly;
     padding: 12px 0px;
-    background-color: yellow;
+    background-color: var(--navBackground);
     box-shadow: 1px 1px 1px black;
 }
 
 nav > a {
     text-decoration: none;
-    color: black;
+    color: var(--navColor);
     font-weight: bolder;
     padding:5px;
     border-radius: 2px;
@@ -27,8 +35,8 @@ nav > a {
 }
 
 nav > a:hover{
-    background-color: green;
-    color:white;
+    background-color: var(--linkBackgroundHover);
+    color:var(--navColorHover);
 }
 
 

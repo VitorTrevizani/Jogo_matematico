@@ -4,31 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina principla</title>
-    <link rel="stylesheet" href="/css/ranking.css">
+    <link rel="stylesheet" href="/css/rankings.css">
     <link rel="stylesheet" href="/css/menu.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 </head>
 <body>
     {{>_menu}}
+    
     <main>
-        <div>
+        <div id="escolha">
           <a href="/game/rankings?dif=recordeFacil">facil</a>
           <a href="/game/rankings?dif=recordeMedio">medio</a>
           <a href="/game/rankings?dif=recordeDificil">dificil</a>
           <a href="/game/rankings?dif=recordeHard">hard</a>
-            
         </div>
-        <div id="Facil">
+
+        <div id="facil">
             {{#each usuarios}}
-                <div>
-                    <h1>{{nome}}</h1>
-                    <p>Recorde fácil: {{recordeFacil}}</p>
-                    <p>Recorde médio: {{recordeMedio}}</p>
-                    <p>Recorde difícil: {{recordeDificil}}</p>
-                    <p>Recorde hard: {{recordeHard}}</p>
+                <div class="usuarios">
+                    <input type="hidden"  class="path" value="{{avatarPath}}">
+                    <div class="posicao"><p class="num"></p></div>
+                    <div class="animacao">
+                         <img src="/img/avatares/anonimo.png" alt="" style="display: none;" class="anonimo">
+                    </div>
+                    <div class="info">
+                        <h1>{{nome}}</h1>
+                        <p>Recorde fácil: {{recordeFacil}}</p>
+                        <p>Recorde médio: {{recordeMedio}}</p>
+                        <p>Recorde difícil: {{recordeDificil}}</p>
+                        <p>Recorde hard: {{recordeHard}}</p>
+                    </div>
                 </div>
             {{else}}
             {{/each}}
         </div>
     </main>
+
+    <script>
+        
+        const usuarios = document.getElementsByClassName("usuarios")
+
+        for(let i=0; i<usuarios.length; i++){
+
+           const caminho = usuarios[i].querySelector('.path').value
+           const container = usuarios[i].querySelector('.animacao')
+           const anonimo = usuarios[i].querySelector(".anonimo")
+
+            if(caminho && caminho != "null"){
+                lottie.loadAnimation({
+                    container: container,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: caminho
+                })
+            }else{
+                anonimo.style.display = "block"; 
+            }
+        }
+
+   
+        let cont = 1;
+
+        for(let i=0; i<usuarios.length; i++){
+           posicao =  usuarios[i].querySelector(".num")
+           posicao.innerHTML = cont;
+           cont++;
+        }
+       
+    </script>
 </body>
 </html>
