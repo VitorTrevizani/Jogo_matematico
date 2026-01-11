@@ -14,7 +14,7 @@
 
 
 header{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
 nav{
@@ -30,7 +30,7 @@ nav > a {
     color: var(--navColor);
     font-weight: bolder;
     padding:5px;
-    border-radius: 2px;
+    border-radius: 7%;
     transition: background-color, 0.5s;
 }
 
@@ -45,7 +45,6 @@ nav > a:hover{
     nav > a{
         width:150px;
         text-align: center;
-        border-radius: 8px;
     }
 
     nav #login{

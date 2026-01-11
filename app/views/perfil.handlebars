@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="/css/menu.css">
     <script src="https://kit.fontawesome.com/8623f200e5.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Peralta&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
@@ -16,22 +21,25 @@
 
     <main>
         <input id="path" type="hidden" value={{User.avatarPath}}>
+
+        <h1>{{User.nome}}</span></h1>
         
-        <div id="animacao">
-            {{#if User.avatarPath}}
-                
-            {{else}}
-                <img src="/img/avatares/anonimo.png" alt="foto aqui">
-            {{/if}} 
-        </div>
-        <div id="info">
-            <h3>Nome: {{User.nome}}</h3>
-            <h3>Recorde fácil: {{User.recordeFacil}} </h3>
-            <h3>Recorde médio: {{User.recordeMedio}} </h3>
-            <h3>Recorde difícil: {{User.recordeDificil}} </h3>
-            <h3>Recorde hard: {{User.recordeHard}} </h3>
-            <a href="/game/escolherAvatar"><button>Mudar avatar</button></a>
-            <button id="mudarNome">Mudar nome</button>
+        <div id="perfil">
+            <div id="animacao">
+                {{#if User.avatarPath}}
+            
+                {{else}}
+                    <img src="/img/avatares/anonimo.png" alt="foto aqui">
+                {{/if}}
+            </div>
+            <div id="info">
+                <h3>Recorde fácil: <span>{{User.recordeFacil}}</span></h3>
+                <h3>Recorde médio: <span>{{User.recordeMedio}}</span> </h3>
+                <h3>Recorde difícil: <span>{{User.recordeDificil}}</span> </h3>
+                <h3>Recorde hard: <span>{{User.recordeHard}}</span> </h3>
+                <a href="/game/escolherAvatar"><button>Mudar avatar</button></a>
+                <button id="mudarNome">Mudar nome</button>
+            </div>
         </div>
 
         <div id="card">
@@ -48,9 +56,9 @@
         const caminho = document.getElementById('path').value
         const x = document.getElementById("x")
         const card = document.getElementById("card")
-        const botao = document.getElementById("mudarNome")
+        const button = document.getElementById("mudarNome")
 
-        botao.addEventListener("click", () => {
+        button.addEventListener("click", () => {
             card.style.display = "block";
 
         })
@@ -69,6 +77,8 @@
             })
         }
     </script>
+
+    <script src="/modo_escuro.js"></script>
 
 </body>
 </body>

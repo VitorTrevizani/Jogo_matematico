@@ -13,13 +13,13 @@
     
     <main>
         <div id="escolha">
-          <a href="/game/rankings?dif=recordeFacil">facil</a>
-          <a href="/game/rankings?dif=recordeMedio">medio</a>
-          <a href="/game/rankings?dif=recordeDificil">dificil</a>
-          <a href="/game/rankings?dif=recordeHard">hard</a>
+          <a href="/game/rankings?dif=recordeFacil">Fácil</a>
+          <a href="/game/rankings?dif=recordeMedio">Médio</a>
+          <a href="/game/rankings?dif=recordeDificil">Difícil</a>
+          <a href="/game/rankings?dif=recordeHard">Hard</a>
         </div>
 
-        <div id="facil">
+        <div id="ranking">
             {{#each usuarios}}
                 <div class="usuarios">
                     <input type="hidden"  class="path" value="{{avatarPath}}">
@@ -71,7 +71,9 @@
            posicao.innerHTML = cont;
            cont++;
         }
-       
     </script>
+
+    <script src="/modo_escuro.js"></script>
+
 </body>
 </html>

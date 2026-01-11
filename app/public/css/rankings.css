@@ -6,52 +6,82 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+:root{
+   --background: rgb(43, 43, 249);
+   --background-escolha: aquamarine;
+   --color-escolha: black;
+   --background-posicao:orangered;
+   --background-usuario:aqua;
+   --shadow: black;
+   --background-info: aquamarine;
+   --color-info:black;
+   
+}
+
+
+.escuro{
+    --navBackground: blue;
+    --navColor: white;
+    --navColorHover: black;
+    --linkBackgroundHover: red;
+
+    --background: rgb(0, 0, 0);
+    --background-escolha: rgb(253, 160, 0);
+    --color-escolha: black;
+    --background-posicao:red;
+    --background-usuario:rgb(119, 0, 255);
+    --shadow:white;
+    --background-info: rgb(48, 26, 249);
+    --color-info:white;
+}
 
 
 main{
     padding: 10px;
-    background-color: aliceblue;
-    background-color: rgb(43, 43, 249);
+    background-color: var(--background);
 }
 
 div#escolha{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
     width: 50%;
     margin: auto;
-    padding: 50px;
+    padding: 50px; 
     
 }
 
 div#escolha > a{
     padding: 10px;
-    background-color: aquamarine;
+    background-color: var(--background-escolha);
     margin: 0 7%;
     border-radius: 10px;
     text-decoration: none;
-    color:black;
+    color: var(--color-escolha);
+    font-weight: bold;
 }
 
-div#facil{
+div#ranking{
     margin:auto;
-    width: 40%;
+    width: 50%;
     text-align: center;
 }
 
 div.posicao{
     padding: 10px;
-    background-color: orangered;
+    background-color: var(--background-posicao);
     border-radius: 20px;
     color: white;
-
 }
 
 div.usuarios{
     display: flex;
     justify-content: space-between;
-    background-color: aqua;
+    background-color:var(--background-usuario);
     margin: 10px;
     padding: 10px 10px 10px 0;
     border-radius: 10px;
-    box-shadow: 1px 1px 3px 0px black;
+    box-shadow: 1px 1px 3px 0px var(--shadow);
 }
 
 
@@ -69,9 +99,11 @@ img{
 
 div.info{
     margin: auto 0;
-    background-color: aquamarine;
+    background-color: var(--background-info);
+    color:var(--color-info);
     padding: 10px;
     border-radius: 10px;
+    box-shadow: 1px 1px 3px 0px var(--shadow);
 }
 
 div.info > h1, p{
@@ -84,8 +116,12 @@ div.info > h1, p{
 
 @media screen and (max-width:999px){
 
-    html{
-        font-size: 10px;
+    div.info h1,p{
+        font-size: 13px;
+    }
+
+    div#ranking{
+        width: 70%;
     }
 
     div.usuarios{
@@ -96,7 +132,11 @@ div.info > h1, p{
 
     div.animacao{
         margin: auto;
+        height: 100px;
     }
 
 
+    div.posicao p{
+      margin: 0;
+    }
 }

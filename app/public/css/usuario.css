@@ -10,7 +10,7 @@
     --fundo1:blue;
     --fundo2:rgb(204, 204, 252);
     --titulo:black;
-    --paragrafo: aquamarine;
+    --paragrafo: black;
 
     --cardBackground:#1b0101;
     --h2Color: black;
@@ -44,6 +44,7 @@ main{
     justify-content: space-evenly;
     height: 92.3vh;
     background-image: linear-gradient(to bottom, var(--fundo1), var(--fundo2));
+    overflow: hidden;
 }
 
 div#titulo{
@@ -56,14 +57,16 @@ div#titulo > h1{
     text-shadow: 1px 1px 1px white;
     font-size: 40px;
     padding:10px;
-    color: var(--titulo)
+    color: var(--titulo);
+    font-family: "Peralta" ;
     
 }
 
 div#titulo > p{
     margin-top: 15px;
     color:var(--paragrafo);
-    text-shadow: 1px 1px 1px black;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 div.escolha{
@@ -74,11 +77,10 @@ div.escolha{
 
 div.escolha > p{
     padding: 10px;
-    color:rgb(2, 49, 15);
+    color:var(--paragrafo);
     font-weight: 700;
-    text-shadow: 1px 1px 1px white;
+
     font-size: 20px;
-    background-image: linear-gradient(to right, #7272FD, yellow, #7272FD);
 }
 
 div.escolha a{
@@ -131,16 +133,15 @@ div#game{
    flex-flow: column nowrap;
    align-items: center;
    justify-content: center;
+   padding: 10px;
    height: 100%;
-   text-align: center;
-   
+   text-align: center; 
 }
 
 div#game > h2{
-    background-color: white;
     padding: 10px;
     border-radius: 10px;
-    margin: 50px 0px;
+    margin: 50px 0px 30px;
     color:var(--h2Color);
     text-shadow: 1px 1px 1px black;
     font-size: 100%;
@@ -148,7 +149,6 @@ div#game > h2{
 
 div#info{
     color: var(--h2Color);
-    background-color: white;
     padding: 5px;
     border-radius: 10px;
 }
@@ -157,7 +157,8 @@ div#cards{
     display: flex;
     justify-content: center;
     width: 300px;
-    margin-top: 5px;
+    margin-top: 30px;
+    /* margin-top: 5px; */
 }
 
 div#game  div.card{
@@ -177,7 +178,8 @@ div#game  div.card > h1{
 }
 
 div#game > button#start{
-    margin: auto;
+    margin: 30px;
+    /* margin: auto; */
     padding: 12px;
     border-radius: 10px;
     background-color: green;
@@ -223,8 +225,6 @@ div#game > div#alternativas > button{
     div#titulo > p{
         font-size: 18px;
         margin-top:60px;
-        color: rgb(2, 38, 26);
-        text-shadow: 1px 1px 1px white;
         font-weight: bold;
     }
 
@@ -232,7 +232,7 @@ div#game > div#alternativas > button{
 
     div.escolha > p{
         background-image: none;
-        color: white;
+        
     }
 
     div.escolha a{
@@ -263,6 +263,7 @@ div#game > div#alternativas > button{
         width: 80%;
         height: 100%;
         text-align: center;
+        padding: 0px;
     }
 
     div#game > h2{
