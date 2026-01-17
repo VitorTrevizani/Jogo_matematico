@@ -43,6 +43,7 @@ main{
 
 main > h1{
     color:white;
+    font-family: "Peralta";
     font-size: 4em;
     margin-bottom: 40px;
 }
@@ -79,6 +80,7 @@ div#animacao > img{
 }
 
 div#info > h3{
+    font-family: "Sour Gummy";
     padding: 10px;
     background-color: var(--background-info);
     border-radius: 10px;

@@ -5,9 +5,15 @@ let acertos = 0;
 let cardResultado = 0
 let alternativas = document.getElementsByClassName("altern");
 let start = document.getElementById("start");
+let stop = document.getElementById("stop");
 let dificuldade = document.getElementById("dificuldade").value;
 let tentativas = 0;
 let limite = 0;
+let infoTent = document.getElementById("infoTent");
+let infoTemp = document.getElementById("infoTemp");
+let card1 = document.getElementById("card1");
+let card2 = document.getElementById("card2");
+
 
 
 
@@ -28,16 +34,25 @@ function enviarPontuacao(score, dificuldade) {
 
 
 
+function avisar(elemento){
+       elemento.classList.toggle("avisar");
+    setTimeout(() => {
+       elemento.classList.toggle("avisar");
+    }, 1500)  
+}
+
+
+
 function cria_interface(){
-
-    let cronometro
     
-    document.getElementById("infoTent").innerHTML = tentativas;
+    let cronometro
 
-    let card1 = Math.trunc(((Math.random()) * limite));
-    let card2 =  Math.trunc(((Math.random()) * limite)); 
-    document.getElementById("card1").innerHTML = card1;
-    document.getElementById("card2").innerHTML = "+ " + card2;
+    infoTent.innerHTML = tentativas;
+
+    let card1Content = Math.trunc(((Math.random()) * limite));
+    let card2Content =  Math.trunc(((Math.random()) * limite)); 
+    card1.innerHTML = card1Content;
+    card2.innerHTML = "+ " + card2Content;
     cardResultado = Math.trunc(Math.random() * (3 - 0 + 1)) + 0;
     temp = true
 
@@ -46,44 +61,48 @@ function cria_interface(){
         if(dificuldade === "facil"){           
             cronometro = 10
             if(i == cardResultado){
-                alternativas[i].innerHTML = card1 + card2;
+                alternativas[i].innerHTML = card1Content + card2Content;
                 respostaCerta = alternativas[i];
             }
             else{
-                alternativas[i].innerHTML = Math.trunc(((Math.random()) * limite));
+                let operacao = card1Content + card2Content;
+                alternativas[i].innerHTML = Math.random() >= 0.5? Math.trunc((Math.random() * 10) + operacao) : operacao - Math.trunc((Math.random() * 10));
             }
         }
 
         else if(dificuldade === "medio"){           
             cronometro = 8
             if(i == cardResultado){
-                alternativas[i].innerHTML = card1 + card2;
+                alternativas[i].innerHTML = card1Content + card2Content;
                 respostaCerta = alternativas[i];
             }
             else{
-                alternativas[i].innerHTML = Math.trunc(((Math.random()) * limite));
+                operacao = card1Content + card2Content;
+                alternativas[i].innerHTML = Math.random() > 0.5? Math.trunc((Math.random() * 10) + operacao) : operacao - Math.trunc((Math.random() * 10));
             }
         }
 
         else if(dificuldade === "dificil"){ 
             cronometro = 6
             if(i == cardResultado){
-                alternativas[i].innerHTML = card1 + card2;
+                alternativas[i].innerHTML = card1Content + card2Content;
                 respostaCerta = alternativas[i];
             }
             else{
-                alternativas[i].innerHTML = Math.trunc(((Math.random()) * limite));
+                operacao = card1Content + card2Content;
+                alternativas[i].innerHTML = Math.random() > 0.5? Math.trunc((Math.random() * 10) + operacao) : operacao - Math.trunc((Math.random() * 10));
             }
         }
 
         else{
             cronometro = 5
             if(i == cardResultado){
-                alternativas[i].innerHTML = card1 + card2;
+                alternativas[i].innerHTML = card1Content + card2Content;
                 respostaCerta = alternativas[i];
             }
             else{
-                alternativas[i].innerHTML = Math.trunc(((Math.random()) * limite));
+                operacao = card1Content + card2Content;
+                alternativas[i].innerHTML = Math.random() > 0.5? Math.trunc((Math.random() * 10) + operacao) : operacao - Math.trunc((Math.random() * 10));
             }
         }
     }
@@ -101,17 +120,19 @@ function cria_interface(){
             if(cronometro <= 0){
                 clearInterval(id);
                 cronometro = 0;
-                document.getElementById("infoTemp").innerHTML = cronometro;
+                infoTemp.innerHTML = cronometro;
                 tentativas--;
+                avisar(infoTent.parentNode);
                 if(tentativas <= 0){ // fazer o botão de start voltar, e resetar os valores dos cards;
                     enviarPontuacao(acertos, dificuldade)
                     acertos = 0;
-                    document.getElementById("start").style.display = "block";
+                    start.style.display = "block";
+                    stop.style.display = "none";
                     for(let i=0; i < alternativas.length; i++){
                         alternativas[i].innerHTML = "0000";
                     }
-                    document.getElementById("card1").innerHTML = "0000";
-                    document.getElementById("card2").innerHTML = "0000";
+                    card1.innerHTML = "0000";
+                    card2.innerHTML = "0000";
                         
                     if(dificuldade === "facil"){
                         tentativas = 7;
@@ -129,7 +150,7 @@ function cria_interface(){
                         tentativas = 3;
                     }
 
-                    document.getElementById("infoTent").innerHTML = tentativas;
+                    infoTent.innerHTML = tentativas;
                     temp = false;
                 }
                 else{
@@ -137,11 +158,12 @@ function cria_interface(){
                 return
                 }    
             }
-            document.getElementById("infoTemp").innerHTML = cronometro;
+            infoTemp.innerHTML = cronometro;
             cronometro -- ;
             
         }, 1000); // 1000 milissegundos = 1 segundo
     }
+  
 
 }
 
@@ -150,7 +172,9 @@ function cria_interface(){
 
 
 start.addEventListener("click", () => {
-     document.getElementById("start").style.display = "none";
+
+    start.style.display = "none";
+    stop.style.display = "block";
 
     if (dificuldade === "facil"){
         tentativas = 7;
@@ -174,6 +198,43 @@ start.addEventListener("click", () => {
 
 
 
+stop.addEventListener("click", () => {
+
+    clearInterval(id)
+    enviarPontuacao(acertos, dificuldade)
+
+    acertos = 0;
+    start.style.display = "block";
+    stop.style.display = "none";
+    for(let i=0; i < alternativas.length; i++){
+        alternativas[i].innerHTML = "0000";
+    }
+    card1.innerHTML = "0000";
+    card2.innerHTML = "0000";
+        
+    if(dificuldade === "facil"){
+        tentativas = 7;
+    }
+
+    else if(dificuldade === "medio"){
+        tentativas = 5;
+    }
+
+    else if(dificuldade === "dificil"){
+        tentativas = 3;
+    }
+
+    else{
+        tentativas = 3;
+    }
+
+    infoTent.innerHTML = tentativas;
+    infoTemp.innerHTML = 0;
+
+})
+
+
+
 
 
 
@@ -187,15 +248,17 @@ for(let i=0; i<alternativas.length; i++){
         }
         else{
             tentativas --;
+            avisar(infoTent.parentNode);
             if(tentativas == 0){ // fazer o botão de start voltar, e resetar os valores dos cards;
                 enviarPontuacao(acertos, dificuldade)
                 acertos = 0
-                document.getElementById("start").style.display = "block";
+                start.style.display = "block";
+                stop.style.display = "none";
                 for(let i=0; i < alternativas.length; i++){
                     alternativas[i].innerHTML = "0000";
                 }
-                document.getElementById("card1").innerHTML = "0000";
-                document.getElementById("card2").innerHTML = "0000";
+                card1.innerHTML = "0000";
+                card2.innerHTML = "0000";
                     
                 if(dificuldade === "facil"){
                     tentativas = 7;
@@ -213,7 +276,7 @@ for(let i=0; i<alternativas.length; i++){
                     tentativas = 3;
                 }
 
-                document.getElementById("infoTent").innerHTML = tentativas;
+                infoTent.innerHTML = tentativas;
                 
             }
             else{
@@ -227,7 +290,15 @@ for(let i=0; i<alternativas.length; i++){
     
 
     
-   
+
+window.addEventListener("beforeunload", function (event) {
+  if(start.style.display == "none"){
+    // Mensagem padrão 
+    event.preventDefault();
+    event.returnValue = "";
+  }
+});
+
 
 
 

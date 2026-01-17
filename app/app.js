@@ -67,6 +67,3 @@ app.listen(PORT, () => {
 })
 
 
-//fazer o arquivo script.js chamar a api quando o usuario sair da pagina, enviando os dados para a rota
-//ver questão das fontes, pesos e letras maiúsculas
-//consertar o error_msg no index.html

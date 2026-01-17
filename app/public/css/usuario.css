@@ -148,9 +148,18 @@ div#game > h2{
 }
 
 div#info{
-    color: var(--h2Color);
     padding: 5px;
-    border-radius: 10px;
+    
+}
+
+div#info > h3{
+   color: var(--h2Color);  
+   border-radius: 5px;
+   padding: 3px;
+}
+
+.avisar{
+    background-color: red;
 }
 
 div#cards{
@@ -179,11 +188,19 @@ div#game  div.card > h1{
 
 div#game > button#start{
     margin: 30px;
-    /* margin: auto; */
     padding: 12px;
     border-radius: 10px;
     background-color: green;
     font-weight:bold;
+}
+
+div#game > button#stop{
+    display: none;
+    margin: 30px;
+    padding: 12px;
+    border-radius: 10px;
+    background-color: red;
+    font-weight:bold; 
 }
 
 div#game > div#alternativas > button{
