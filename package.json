@@ -4,13 +4,20 @@
     "body-parser": "^2.2.1",
     "connect": "^3.7.0",
     "connect-flash": "^0.1.1",
+    "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "express-handlebars": "^8.0.4",
     "express-session": "^1.18.2",
     "flash": "^1.1.0",
     "mongoose": "^9.0.1",
     "passport": "^0.7.0",
-    "passport-local": "^1.0.0",
-    "swagger-ui-express": "^5.0.1"
+    "passport-local": "^1.0.0"
+  },
+  "scripts": {
+    "start": "nodemon src/app",
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0"
   }
 }

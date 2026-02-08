@@ -1,42 +1,45 @@
+const path = require("path")
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") })
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const { engine } = require("express-handlebars")
 const mongoose = require("mongoose")
-const path = require("path")
 const game = require("./routes/game")
 const gameplay = require("./routes/gameplay")
 const session = require("express-session")
 const flash = require("connect-flash")
 const passport = require("passport")
 require("./config/auth")(passport)
-const swaggerUI = require("swagger-ui-express")
-const swaggerDocument = require("./docs/swagger.json")
 
 
 
-//caminho onde estará a documentação. swagger.serve cria um servidor para servir a documentação e setup recebe o json com a configuração
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+
 
 //configurações
+    app.use(express.json())
+    app.use(express.urlencoded({ extended: true })) // para forms HTML
+
     //public
     app.use(express.static(path.join(__dirname,"public"))) //transforma a pasta public em raiz publica, assim nao éprecisso especificar ela no html
-   //body-parser
-        app.use(bodyParser.urlencoded({extended:true}))  
-        app.use(bodyParser.json())
+
    //mongoose
-       mongoose.connect("mongodb://localhost:27017/mathApp").then(() => {
+       const DB_CONNECT = process.env.DB_CONNECT
+       mongoose.connect(DB_CONNECT).then(() => {
         console.log("Mongoose conectado!")
        }).catch((err) => {
         console.log("Falha ao se conectar com o mongoose: " + err)
        })
+
    //handlebars
     app.engine("handlebars", engine())
     app.set("view engine", "handlebars")
+    app.set("views", path.join(__dirname, "views"))
 
    //session
+    const SECRET = process.env.SECRET
     app.use(session({
-        secret: "math123vitor",
+        secret: SECRET,
         resave: false,
         saveUninitialized: false
     }))
@@ -67,7 +70,8 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 
 
-const PORT = 8081
+const PORT = process.env.PORT 
+
 app.listen(PORT, () => {
     console.log("sevidor rodando!")
 })
